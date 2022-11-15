@@ -52,4 +52,4 @@ jobs:
           app-name: 'rosen-task-fe'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E7433BCC946A41CABEF06B412A91457C }}
-          package: .
+          package: ./dist/book-store
