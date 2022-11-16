@@ -1,0 +1,51 @@
+<div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Đăng nhập</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="login-form">
+          <form action="">
+            <div class="mb-3">
+              <label for="username" class="form-label">Tài khoản</label>
+              <input
+                type="text"
+                class="form-control"
+                id="username"
+                required
+                [maxLength]="20"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Mật khẩu</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                required
+                [maxLength]="20"
+              />
+            </div>
+            <div class="div-fb">
+              <button type="submit" class="btn btn-primary">Đăng nhập</button>
+            </div>
+          </form>
+          <hr />
+          <div class="div-fb">
+            <div>Hoặc</div>
+            <button type="button" class="facebook-button">
+              <i class="bi bi-facebook"></i> Đăng nhập bằng facebook
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

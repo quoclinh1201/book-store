@@ -1,0 +1,126 @@
+.product-detail-frame {
+    margin: 0 auto;
+    margin-top: 2%;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    max-width: 85%;
+    height: auto;
+    display: flex;
+  }
+  
+  .product-detail-overview,
+  .product-detail-images,
+  .product-detail-list-images,
+  .product-detail-image,
+  .product-detail-inline,
+  .product-detail-quantity-inline {
+    display: inline-block;
+  }
+  
+  .product-detail-overview {
+    margin-top: 2%;
+    width: 50%;
+  }
+  
+  .product-detail-images {
+    width: 50%;
+  }
+  
+  .product-detail-list-images {
+    width: 15%;
+  }
+  
+  .product-detail-image {
+    width: 70%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+  
+  .product-detail-thumnail {
+    margin-left: 20%;
+    border: 1px solid black;
+  }
+  
+  .product-detail-title {
+    font-size: 170%;
+    font-weight: 500;
+    margin-bottom: 2%;
+  }
+  
+  .product-detail-some-info {
+    margin-top: 4%;
+    width: 90%;
+  }
+  
+  .product-detail-inline {
+    width: 45%;
+  }
+  
+  .product-detail-price {
+    margin-top: 4%;
+    width: 90%;
+    color: red;
+    font-size: 200%;
+    font-weight: 500;
+  }
+  
+  .product-detail-quantity {
+    margin-top: 2%;
+  }
+  
+  .product-detail-input-quantity {
+    margin-top: 2%;
+    margin-bottom: 10%;
+    width: 20%;
+    text-align: center;
+  }
+  
+  .product-detail-quantity-inline {
+    margin-right: 5%;
+  }
+  
+  @media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .product-detail-frame {
+      display: block;
+    }
+
+    .product-detail-overview,
+    .product-detail-images {
+      display: block;
+    }
+
+    .product-detail-overview {
+      margin-top: 2%;
+      width: 100%;
+    }
+
+    .product-detail-price, .product-detail-quantity {
+      text-align: center;
+    }
+  
+    .product-detail-list-images,
+    .product-detail-some-info,
+    .product-detail-hide {
+      display: none;
+    }
+  
+    .product-detail-image {
+      width: 200%;
+    }
+  
+    .product-detail-title {
+      width: 85%;
+      font-size: 130%;
+      font-weight: 400;
+      margin-left: 5%;
+      margin-right: 5%;
+    }
+    
+    .add-to-cart-btn {
+      text-align: center;
+      margin-bottom: 2%;
+    }
+  }
+  

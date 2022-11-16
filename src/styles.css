@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+.div-fb {
+    text-align: center;
+  }
+  
+  .facebook-button {
+    background-color: blue;
+    color: white;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+  }

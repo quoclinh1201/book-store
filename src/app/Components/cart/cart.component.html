@@ -1,0 +1,83 @@
+<div class="cart-frame">
+  <div class="cart-name">Giỏ hàng (2 sản phẩm)</div>
+  <div class="cart-detail">
+    <div class="cart-item-row-title">
+      <div class="cart-item-1"></div>
+      <div class="cart-item-2"></div>
+      <div class="cart-item-3"><b>Số lượng</b></div>
+      <div class="cart-item-4"><b>Thành tiền</b></div>
+      <div class="cart-item-5"></div>
+    </div>
+    <div class="cart-item-row">
+      <div class="cart-item-1">
+        <a routerLink="product">
+          <img
+            src="https://rosentaskstorage.blob.core.windows.net/book-store/p_1_1.jpg"
+            class="img-fluid"
+            alt="..."
+          />
+        </a>
+      </div>
+      <div class="cart-item-2">
+        <div>
+          IKIGAMI - Tập 5 - Tặng Kèm Bookmark IKIGAMI
+        </div>
+        <div><b>45.000đ</b></div>
+      </div>
+      <div class="cart-item-3">
+        <div class="product-cart-quantity-inline">
+          <button (click)="decreaseValue()">-</button>
+          <input
+            class="product-cart-input-quantity"
+            type="number"
+            value="{{ quantityOfProduct }}"
+            disabled
+          />
+          <button (click)="increaseValue()">+</button>
+        </div>
+      </div>
+      <div class="cart-item-4"><b style="color: red">45.000đ</b></div>
+      <div class="cart-item-5">
+        <h2><i class="bi bi-trash3"></i></h2>
+      </div>
+    </div>
+    <div class="cart-item-row">
+      <div class="cart-item-1">
+        <img
+          src="https://rosentaskstorage.blob.core.windows.net/book-store/p_1_1.jpg"
+          class="img-fluid"
+          alt="..."
+        />
+      </div>
+      <div class="cart-item-2">
+        <div>IKIGAMI - Tập 5 - Tặng Kèm Bookmark IKIGAMI</div>
+        <div><b>45.000đ</b></div>
+      </div>
+      <div class="cart-item-3">
+        <div class="product-cart-quantity-inline">
+          <button (click)="decreaseValue()">-</button>
+          <input
+            class="product-cart-input-quantity"
+            type="number"
+            value="{{ quantityOfProduct }}"
+            disabled
+          />
+          <button (click)="increaseValue()">+</button>
+        </div>
+      </div>
+      <div class="cart-item-4"><b style="color: red">45.000đ</b></div>
+      <div class="cart-item-5">
+        <h2><i class="bi bi-trash3"></i></h2>
+      </div>
+    </div>
+  </div>
+  <app-checkout></app-checkout>
+  <div class="total-price-row">
+    <div class="total-price">
+      <b>Tổng tiền: </b><b style="color: red">450.000đ</b>
+    </div>
+    <div class="checkout-button">
+      <button type="button" class="btn btn-primary">Thanh toán</button>
+    </div>
+  </div>
+</div>

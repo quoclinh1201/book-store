@@ -1,0 +1,20 @@
+.delivery-info-frame {
+  margin: 0 auto;
+  margin-top: 2%;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  max-width: 85%;
+  height: auto;
+}
+
+.delivery-info-title {
+  margin: 2%;
+  font-size: 120%;
+  font-weight: 500;
+}
+
+.delivery-info-table {
+    width: 90%;
+    margin: 0 auto;
+}

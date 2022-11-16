@@ -1,0 +1,27 @@
+<div class="checkout-frame">
+  <div class="checkout-name">Thông tin giao hàng</div>
+  <div class="delivery-information">
+    <input type="text" hidden value="1" name="delivery_id" />
+    <div class="choose-delivery-info">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#chooseDeliveryAddress">
+        Chọn thông tin nhận hàng
+      </button>
+    </div>
+    <div class="delivery-info">
+      <div><b>Tên người nhận: </b>Nguyễn Văn A</div>
+      <div><b>Số điện thoại: </b>0987654321</div>
+      <div>
+        <b>Địa chỉ nhận hàng: </b>Đ. D2, Tăng Nhơn Phú B, Quận 9, Thành phố Hồ
+        Chí Minh, Việt Nam
+      </div>
+    </div>
+    <div><b>Phương thức thanh toán:</b></div>
+    <div>
+      <input type="radio" id="cash" name="payment-method" value="Cash" />
+      <label for="cash">COD (Thanh toán khi nhận hàng)</label><br />
+      <input type="radio" id="zalopay" name="payment-method" value="ZaloPay" />
+      <label for="zalopay">ZaloPay</label><br />
+    </div>
+  </div>
+</div>
+<app-choose-delivery></app-choose-delivery>

@@ -1,0 +1,69 @@
+<div
+  class="modal fade"
+  id="RegisterModal"
+  tabindex="-1"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">
+          Đăng ký tài khoản
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <form action="">
+            <div class="mb-3">
+              <label for="r-username" class="form-label">Tài khoản</label>
+              <input
+                type="text"
+                class="form-control"
+                id="r-username"
+                required
+                [maxLength]="20"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="r-password" class="form-label">Mật khẩu</label>
+              <input
+                type="password"
+                class="form-control"
+                id="r-password"
+                required
+                [maxLength]="20"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="r-confirm" class="form-label">Xác nhận mật khẩu</label>
+              <input
+                type="text"
+                class="form-control"
+                id="r-confirm"
+                required
+                [maxLength]="20"
+              />
+            </div>
+            <div class="div-fb">
+              <button type="submit" class="btn btn-primary">Đăng ký</button>
+            </div>
+            
+          </form>
+          <hr />
+          <div class="div-fb">
+            <div>Hoặc</div>
+            <button type="button" class="facebook-button">
+              <i class="bi bi-facebook"></i> Đăng nhập bằng facebook
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
