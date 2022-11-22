@@ -12,28 +12,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Nguyễn Văn A</td>
-          <td>0987654321</td>
+        <tr *ngFor="let item of listDeliveryInformation; let i = index">
+          <th scope="row">{{i+1}}</th>
+          <td>{{item.receiverName}}</td>
+          <td>{{item.receiverPhoneNumber}}</td>
+          <td>{{item.deliveryAddress}}</td>
           <td>
-            Đ. Võ Chí Công, Long Thạnh Mỹ, Quận 9, Thành phố Hồ Chí Minh, Việt
-            Nam
-          </td>
-          <td>
-            <h4><i class="bi bi-trash3"></i></h4>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">1</th>
-          <td>Nguyễn Văn A</td>
-          <td>0987654321</td>
-          <td>
-            Đ. Võ Chí Công, Long Thạnh Mỹ, Quận 9, Thành phố Hồ Chí Minh, Việt
-            Nam
-          </td>
-          <td>
-            <h4><i class="bi bi-trash3"></i></h4>
+            <h4 (click)="deleteDelivery(item.deliveryId)"><i class="bi bi-trash3"></i></h4>
           </td>
         </tr>
       </tbody>

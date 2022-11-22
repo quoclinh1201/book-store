@@ -1,6 +1,6 @@
 <div class="order-detail-frame">
   <div class="order-detail-title">
-    Đơn hàng #1 - 11/11/2022 - Đã đặt - Tổng tiền: 200.000đ
+    Đơn hàng #{{order.orderId}} - {{order.createDate}} - {{order.status}} - Tổng tiền: {{order.totalPrice}}
   </div>
   <div class="order-detail">
     <div class="order-detail-row-title">
@@ -9,50 +9,46 @@
       <div class="order-item-3"><b>Số lượng</b></div>
       <div class="order-item-4"><b>Thành tiền</b></div>
     </div>
-    <div class="order-item-row">
+    <div class="order-item-row" *ngFor="let item of order.orderDetail">
       <div class="order-item-1">
         <a routerLink="product">
           <img
-            src="https://rosentaskstorage.blob.core.windows.net/book-store/p_1_1.jpg"
+            src="{{item.productImageUrl}}"
             class="img-fluid"
             alt="..."
           />
         </a>
       </div>
       <div class="order-item-2">
-        <div>IKIGAMI - Tập 5 - Tặng Kèm Bookmark IKIGAMI</div>
-        <div><b>45.000đ</b></div>
+        <div>{{item.productName}}</div>
+        <!-- <div><b>45.000đ</b></div> -->
       </div>
-      <div class="order-item-3">2</div>
-      <div class="order-item-4"><b style="color: red">45.000đ</b></div>
+      <div class="order-item-3">{{item.quantity}}</div>
+      <div class="order-item-4"><b style="color: red">{{item.price}}</b></div>
     </div>
   </div>
 
   <div class="order-checkout-title">Thông tin giao hàng</div>
   <div class="order-delivery-info">
-    <div><b>Tên người nhận: </b>Nguyễn Văn A</div>
-    <div><b>Số điện thoại: </b>0987654321</div>
+    <div><b>Tên người nhận: </b>{{order.deliveryInformaion.receiverName}}</div>
+    <div><b>Số điện thoại: </b>{{order.deliveryInformaion.receiverPhoneNumber}}</div>
     <div>
-      <b>Địa chỉ nhận hàng: </b>Đ. D2, Tăng Nhơn Phú B, Quận 9, Thành phố Hồ Chí
-      Minh, Việt Nam
-    </div>
-    <div><b>Phương thức thanh toán: </b>Tiền mặt</div>
+      <b>Địa chỉ nhận hàng: </b>{{order.deliveryInformaion.deliveryAddress}}</div>
+    <div><b>Phương thức thanh toán: </b>{{order.paymentMethod}}</div>
   </div>
   <div style="text-align: center; margin-top: 3%">
     <button
       type="button"
       class="btn btn-primary"
-      data-bs-toggle="modal"
-      data-bs-target="#ádas"
+      (click)="reorder()"
     >
       Đặt lại đơn hàng này
     </button>
     <button
-      style="display: none"
+      *ngIf="order.status === 'Đã đặt'"
       type="button"
       class="btn btn-danger"
-      data-bs-toggle="modal"
-      data-bs-target="#ádas"
+      (click)="cancelOrder()"
     >
       Hủy
     </button>

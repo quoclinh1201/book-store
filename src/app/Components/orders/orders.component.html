@@ -13,30 +13,18 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>11/11/2022</td>
-          <td>200.000đ</td>
-          <td>Đã đặt</td>
+        <tr *ngFor="let order of listOrders">
+          <th scope="row">{{order.orderId}}</th>
+          <td>{{order.createDate}}</td>
+          <td>{{order.totalPrice}}</td>
+          <td>{{order.status}}</td>
           <td>
-            <button type="button" class="btn btn-primary" routerLink="order-detail">Xem chi tiết</button>
+            <button type="button" class="btn btn-primary" routerLink="order-detail/{{order.orderId}}">Xem chi tiết</button>
           </td>
-          <td>
-            <button type="button" class="btn btn-danger">Hủy</button>
+          <td >
+            <button type="button" class="btn btn-danger" *ngIf="order.status === 'Đã đặt'" (click)="cancelOrder(order.orderId)">Hủy</button>
           </td>
         </tr>
-        <tr>
-            <th scope="row">1</th>
-            <td>11/11/2022</td>
-            <td>200.000đ</td>
-            <td>Đã Hủy</td>
-            <td>
-              <button type="button" class="btn btn-primary" routerLink="order-detail">Xem chi tiết</button>
-            </td>
-            <td>
-              <!-- <button type="button" class="btn btn-danger">Hủy</button> -->
-            </td>
-          </tr>
       </tbody>
     </table>
   </div>

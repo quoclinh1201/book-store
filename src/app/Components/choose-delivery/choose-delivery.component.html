@@ -19,31 +19,12 @@
       </div>
       <div class="modal-body">
         <div class="choose-address-form">
-          <div>
-            <input type="radio" name="delivery-address" value="1" />
-            <div>Tên người nhận: Nguyễn văn A</div>
-            <div>Số điện thoại: 0987654321</div>
-            <div>
-              Địa chỉ nhận hàng: 13 d, Quận 9, Thành phố Hồ Chí Minh, Việt Nam
-            </div>
-          </div>
-          <hr />
-          <div>
-            <input type="radio" name="delivery-address" value="1" />
-            <div>Tên người nhận: Nguyễn văn A</div>
-            <div>Số điện thoại: 0987654321</div>
-            <div>
-              Địa chỉ nhận hàng: 13 d, Quận 9, Thành phố Hồ Chí Minh, Việt Nam
-            </div>
-          </div>
-          <hr />
-          <div>
-            <input type="radio" name="delivery-address" value="1" />
-            <div>Tên người nhận: Nguyễn văn A</div>
-            <div>Số điện thoại: 0987654321</div>
-            <div>
-              Địa chỉ nhận hàng: 13 d, Quận 9, Thành phố Hồ Chí Minh, Việt Nam
-            </div>
+          <div *ngFor="let delivery of listDeliveryInformation">
+            <input type="radio" [(ngModel)]="deliveryInformaionId" value="{{delivery.deliveryId}}" />
+            <div>Tên người nhận: {{delivery.receiverName}}</div>
+            <div>Số điện thoại: {{delivery.receiverPhoneNumber}}</div>
+            <div>{{delivery.deliveryAddress}}</div>
+            <hr />
           </div>
         </div>
       </div>
@@ -54,7 +35,7 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Đóng
         </button>
-        <button type="button" class="btn btn-primary">Chọn</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="chooseDelivery()">Chọn</button>
       </div>
     </div>
   </div>

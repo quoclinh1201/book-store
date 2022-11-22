@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CookiesService } from 'src/app/Services/cookies.service';
 
 @Component({
   selector: 'app-navbar',
@@ -6,10 +7,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  public isLogedIn = true;
-  constructor() { }
+  public isLogedIn = false;
+  constructor(private cookieService: CookiesService) { }
 
   ngOnInit(): void {
+    this.loadUser();
   }
 
+  loadUser() {
+    const token = this.cookieService.getCookie('token');
+    console.log('token = ' + token);
+    if(token !== '') {
+      this.isLogedIn = true;
+    }
+    else {
+      this.isLogedIn = false;
+    }
+  }
+
+  logout() {
+    this.cookieService.deleteCookie('token');
+    window.location.reload();
+  }
 }

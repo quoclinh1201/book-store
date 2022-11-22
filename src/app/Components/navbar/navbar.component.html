@@ -43,12 +43,13 @@
             </ul>
           </li> -->
         </ul>
-        <div routerLink="cart">
+        <div routerLink="cart" *ngIf="isLogedIn === true">
           <h3>
-            <i class="bi bi-cart"
-              ><span class="position-absolute translate-middle badge rounded-pill bg-danger" style="font-size: 12px;">
+            <i class="bi bi-cart">
+              
+              <!-- <span class="position-absolute translate-middle badge rounded-pill bg-danger" style="font-size: 12px;">
                 1
-              </span>
+              </span> -->
             </i>
           </h3>
         </div>
@@ -74,7 +75,7 @@
                   >
                 </li>
                 <li>
-                  <a class="dropdown-item" routerLink="#">Đăng xuất</a>
+                  <a class="dropdown-item" (click)="logout()">Đăng xuất</a>
                 </li>
               </ul>
               <ul *ngIf="isLogedIn === false" class="dropdown-menu">

@@ -50,11 +50,11 @@
   
   .product-detail-some-info {
     margin-top: 4%;
-    width: 90%;
+    display: flex;
   }
   
   .product-detail-inline {
-    width: 45%;
+    width: 50%;
   }
   
   .product-detail-price {

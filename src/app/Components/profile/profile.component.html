@@ -3,7 +3,7 @@
     <div class="profile-detail-title">Thông tin cá nhân</div>
     <div class="profile-detail-info">
       <form action="">
-        <div class="mb-3">
+        <!-- <div class="mb-3">
           <label for="profile-username" class="form-label">Tài khoản</label>
           <input
             type="text"
@@ -12,16 +12,16 @@
             value="customer1"
             disabled
           />
-        </div>
+        </div> -->
         <div class="mb-3">
           <label for="profile-fullname" class="form-label">Họ và tên</label>
           <input
             type="text"
             class="form-control"
             id="profile-fullname"
-            value="Nguyễn Văn A"
-            disabled
+            [formControl]="fullname"
           />
+          <div *ngIf="fullnameErr !== ''" style="color: red;">{{fullnameErr}}</div>
         </div>
         <div class="mb-3">
           <label for="profile-email" class="form-label">Email</label>
@@ -29,9 +29,9 @@
             type="email"
             class="form-control"
             id="profile-email"
-            value="abc@gmail.com"
-            disabled
+            [formControl]="email"
           />
+          <div *ngIf="emailErr !== ''" style="color: red;">{{emailErr}}</div>
         </div>
         <div class="mb-3">
           <label for="profile-phone" class="form-label">Số điện thoại</label>
@@ -39,26 +39,29 @@
             type="tel"
             class="form-control"
             id="profile-phone"
-            value="0987654321"
-            disabled
+            [formControl]="phone"
           />
+          <div *ngIf="phoneErr !== ''" style="color: red;">{{phoneErr}}</div>
         </div>
         <div class="mb-3">
           <label for="profile-gender" class="form-label">Giới tính</label>
-          <select class="form-control" id="profile-gender" disabled>
-            <option selected>Nam</option>
-            <option>Nữ</option>
+          <select class="form-control" id="profile-gender" [formControl]="gender">
+            <option [selected]="gender.value === true" value="true">Nam</option>
+            <option  [selected]="gender.value === false" value="false">Nữ</option>
           </select>
         </div>
-        <button type="button" class="btn btn-primary update-profile-btn">
+        <button type="button" class="btn btn-primary" style="margin-right: 5%;" *ngIf="isEditMode === true" (click)="updateProfile()">
           Cập nhật
+        </button>
+        <button type="button" class="btn btn-danger" *ngIf="isEditMode === true" (click)="cancelEdit()">
+          Hủy
         </button>
       </form>
       <div>
-        <button type="button" class="btn btn-primary" style="margin-right: 4%" data-bs-toggle="modal" data-bs-target="#change-password-form">
+        <button type="button" class="btn btn-primary" *ngIf="isEditMode === false" style="margin-right: 4%" data-bs-toggle="modal" data-bs-target="#change-password-form">
           Đổi mật khẩu
         </button>
-        <button type="button" class="btn btn-primary">
+        <button type="button" class="btn btn-primary" *ngIf="isEditMode === false" (click)="changeToEditMode()">
           Cập nhật thông tin cá nhân
         </button>
       </div>
@@ -68,30 +71,35 @@
     <div class="profile-detail-avatar">Ảnh đại diện</div>
     <div class="avatar">
       <img
-        src="https://rosentaskstorage.blob.core.windows.net/book-store/avt_2.jpg"
+        src="{{avatarUrl}}"
         class="avatar-image"
         alt="avt"
       />
     </div>
     <div>
-      <button type="button" class="btn btn-primary change-avt-btn">
+      <button type="button" class="btn btn-primary change-avt-btn" *ngIf="isChangeAvtMode === false" (click)="changeAvtMode()">
         Đổi ảnh đại diện
       </button>
 
-      <div class="input-group upload-avt">
+      <div class="input-group upload-avt" *ngIf="isChangeAvtMode === true">
         <input
           type="file"
           class="form-control"
-          id="inputGroupFile04"
-          aria-describedby="inputGroupFileAddon04"
-          aria-label="Upload"
+          (change)="onFileSelected($event)"
         />
         <button
           class="btn btn-primary"
           type="button"
-          id="inputGroupFileAddon04"
+          (click)="updateAvt()"
         >
           Cập nhật
+        </button>
+        <button
+          class="btn btn-danger"
+          type="button"
+          (click)="cancelChangeAvt()"
+        >
+          Hủy
         </button>
       </div>
     </div>

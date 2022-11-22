@@ -12,15 +12,14 @@
       </div>
       <div class="modal-body">
         <div class="login-form">
-          <form action="">
+          <form>
             <div class="mb-3">
               <label for="username" class="form-label">Tài khoản</label>
               <input
                 type="text"
                 class="form-control"
                 id="username"
-                required
-                [maxLength]="20"
+                [formControl]="username"
               />
             </div>
             <div class="mb-3">
@@ -29,14 +28,14 @@
                 type="password"
                 class="form-control"
                 id="password"
-                required
-                [maxLength]="20"
+                [formControl]="password"
               />
             </div>
+            <div *ngIf="errorMessage !== undefined" class="error-message">{{errorMessage}}</div>
             <div class="div-fb">
-              <button type="submit" class="btn btn-primary">Đăng nhập</button>
+              <button type="button" class="btn btn-primary" (click)="login()">Đăng nhập</button>
             </div>
-          </form>
+            </form>
           <hr />
           <div class="div-fb">
             <div>Hoặc</div>

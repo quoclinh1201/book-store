@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +24,8 @@ import { DeliveryInformationComponent } from './Components/delivery-information/
 import { OrdersComponent } from './Components/orders/orders.component';
 import { OrderDetailComponent } from './Components/order-detail/order-detail.component';
 import { AddDeliveryComponent } from './Components/add-delivery/add-delivery.component';
+import {CommonUtils} from './Common/CommonUtils';
+
 
 @NgModule({
   declarations: [
@@ -42,13 +47,10 @@ import { AddDeliveryComponent } from './Components/add-delivery/add-delivery.com
     DeliveryInformationComponent,
     OrdersComponent,
     OrderDetailComponent,
-    AddDeliveryComponent
+    AddDeliveryComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule],
+  providers: [CommonUtils],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

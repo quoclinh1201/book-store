@@ -1,12 +1,10 @@
 <div class="search-form">
     <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Tìm kiếm sản phẩm">
-        <select class="form-select">
+        <input type="text" class="form-control" placeholder="Tìm kiếm sản phẩm" [(ngModel)]="searchValue">
+        <select class="form-select" (change)="getSelectedCategory($event)">
             <option selected>Tất cả thể loại</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+            <option *ngFor="let c of categories" value="{{c.categoryName}}">{{c.categoryName}}</option>
           </select>
-        <button class="btn btn-outline-secondary" type="button">Tìm kiếm</button>
+        <button class="btn btn-outline-secondary" type="button" (click)="searchProducts()">Tìm kiếm</button>
     </div>
 </div>

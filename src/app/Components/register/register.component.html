@@ -26,9 +26,9 @@
                 type="text"
                 class="form-control"
                 id="r-username"
-                required
-                [maxLength]="20"
+                [formControl]="username"
               />
+              <div *ngIf="usernameErr !== ''" style="color: red;">{{usernameErr}}</div>
             </div>
             <div class="mb-3">
               <label for="r-password" class="form-label">Mật khẩu</label>
@@ -36,22 +36,23 @@
                 type="password"
                 class="form-control"
                 id="r-password"
-                required
-                [maxLength]="20"
+                [formControl]="password"
               />
+              <div *ngIf="passwordErr !== ''" style="color: red;">{{passwordErr}}</div>
             </div>
             <div class="mb-3">
               <label for="r-confirm" class="form-label">Xác nhận mật khẩu</label>
               <input
-                type="text"
+                type="password"
                 class="form-control"
                 id="r-confirm"
-                required
-                [maxLength]="20"
+                [formControl]="confirmPassword"
               />
+              <div *ngIf="confirmPasswordErr !== ''" style="color: red;">{{confirmPasswordErr}}</div>
             </div>
+            <div *ngIf="registerErr !== ''" style="color: red;">{{registerErr}}</div>
             <div class="div-fb">
-              <button type="submit" class="btn btn-primary">Đăng ký</button>
+              <button type="submit" class="btn btn-primary" (click)="register()">Đăng ký</button>
             </div>
             
           </form>

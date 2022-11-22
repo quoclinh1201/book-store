@@ -49,10 +49,6 @@
   width: 70%;
 }
 
-.update-profile-btn {
-  display: none;
-}
-
 .avatar {
   width: 300px;
   height: 400px;
@@ -71,7 +67,6 @@
 }
 
 .upload-avt {
-    display: none;
     margin: 5%;
     width: 90%;
 }

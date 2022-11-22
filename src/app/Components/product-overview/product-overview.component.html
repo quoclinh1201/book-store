@@ -1,69 +1,89 @@
 <div class="product-detail-frame">
-    <div class="product-detail-images">
-      <div class="product-detail-list-images">
-        <div class="product-detail-thumnail">
-          <img
-            src="https://rosentaskstorage.blob.core.windows.net/book-store/p_1_1.jpg"
-            class="img-fluid"
-            alt="..."
-          />
-        </div>
-        <div class="product-detail-thumnail">
-          <img
-            src="https://rosentaskstorage.blob.core.windows.net/book-store/p_1_1.jpg"
-            class="img-fluid"
-            alt="..."
-          />
-        </div>
-        <div class="product-detail-thumnail">
-          <img
-            src="https://rosentaskstorage.blob.core.windows.net/book-store/p_1_1.jpg"
-            class="img-fluid"
-            alt="..."
-          />
-        </div>
-      </div>
-      <div class="product-detail-image">
-        <img
-          src="https://rosentaskstorage.blob.core.windows.net/book-store/p_1_1.jpg"
-          class="img-fluid"
-          alt="..."
-        />
+  <div class="product-detail-images">
+    <div class="product-detail-list-images">
+      <div
+        class="product-detail-thumnail"
+        *ngFor="let img of product.productImages"
+      >
+        <img src="{{ img.imageUrl }}" class="img-fluid" alt="..." />
       </div>
     </div>
-    <div class="product-detail-overview">
-      <div class="product-detail-title">
-        Giải thíc ngữ pháp tiếng anhGiải thíc ngữ pháp tiếng anGiải thíc n
-      </div>
-      <div class="product-detail-some-info">
-        <div class="product-detail-inline">
-          <div><b>Nhà cung cấp: </b>Alpha Books</div>
-          <div><b>Nhà xuất bản: </b> NXB Dân Trí</div>
-        </div>
-        <div class="product-detail-inline">
-          <div><b>Tác giả: </b> Sara Imas</div>
-          <div><b>Năm phát hành: </b>2022</div>
-        </div>
-      </div>
-      <div class="product-detail-price">100.000đ</div>
-      <div class="product-detail-hide">
-        <div>Chính sách đổi trả: Đổi trả sản phẩm trong 30 ngày</div>
-      </div>
-      <div class="product-detail-quantity">
-        <div class="product-detail-quantity-inline"><b>Số lượng: </b></div>
-        <div class="product-detail-quantity-inline">
-          <button (click)="decreaseValue()">-</button>
-          <input
-            class="product-detail-input-quantity"
-            type="number"
-            value="{{ quantityOfProduct }}"
-            disabled
-          />
-          <button (click)="increaseValue()">+</button>
-        </div>
-      </div>
-      <div class="add-to-cart-btn">
-        <button type="button" class="btn btn-primary">Thêm vào giỏ hàng</button>
-      </div>
+    <div class="product-detail-image">
+      <img
+        src="{{ product.productImages[0].imageUrl }}"
+        class="img-fluid"
+        alt="..."
+      />
     </div>
   </div>
+  <div class="product-detail-overview">
+    <div class="product-detail-title">{{ product.productName }}</div>
+    <div class="product-detail-some-info">
+      <div class="product-detail-inline">
+        <div><b>Nhà cung cấp: </b>{{ product.supplierName }}</div>
+        <div><b>Nhà xuất bản: </b>{{ product.nameOfPublisher }}</div>
+      </div>
+      <div class="product-detail-inline">
+        <div><b>Tác giả: </b>{{ product.author }}</div>
+        <div><b>Năm phát hành: </b>{{ product.yearOfPublication }}</div>
+      </div>
+    </div>
+    <div class="product-detail-price">{{ product.price }}</div>
+    <div class="product-detail-hide">
+      <div>Chính sách đổi trả: Đổi trả sản phẩm trong 30 ngày</div>
+    </div>
+    <ng-container *ngIf="product.isAvailable === false; else checkLogin"><div style="margin-top: 5%; color: red;">Sản phẩm hiện đang hết hàng</div></ng-container>
+    <ng-template #checkLogin>
+      <ng-container *ngIf="isLogedIn === true; else requireLogin">
+        <div class="product-detail-quantity">
+          <div class="product-detail-quantity-inline"><b>Số lượng: </b></div>
+          <div class="product-detail-quantity-inline">
+            <button (click)="decreaseValue()">-</button>
+            <input
+              class="product-detail-input-quantity"
+              type="number"
+              value="{{ quantityOfProduct }}"
+              disabled
+            />
+            <button (click)="increaseValue()">+</button>
+          </div>
+        </div>
+        <div class="add-to-cart-btn">
+          <button type="button" class="btn btn-primary" (click)="addToCart()">
+            Thêm vào giỏ hàng
+          </button>
+        </div>
+      </ng-container>
+    </ng-template>
+    <ng-template #requireLogin>
+      <div style="margin-top: 5%;">Vui lòng đăng nhập để mua hàng</div>
+    </ng-template>
+
+
+    <!-- <div *ngIf="product.isAvailable === true then availableProduct else unavailableProduct"></div>
+      <ng-template #availableProduct>
+        <div class="product-detail-quantity">
+          <div class="product-detail-quantity-inline"><b>Số lượng: </b></div>
+          <div class="product-detail-quantity-inline">
+            <button (click)="decreaseValue()">-</button>
+            <input
+              class="product-detail-input-quantity"
+              type="number"
+              value="{{ quantityOfProduct }}"
+              disabled
+            />
+            <button (click)="increaseValue()">+</button>
+          </div>
+        </div>
+        <div class="add-to-cart-btn">
+          <button type="button" class="btn btn-primary">
+            Thêm vào giỏ hàng
+          </button>
+        </div>
+      </ng-template>
+      <ng-template #unavailableProduct>
+        <div style="margin-top: 5%; color: red;">Sản phẩm hiện đang hết hàng</div>
+      </ng-template> -->
+    
+  </div>
+</div>
