@@ -46,8 +46,8 @@ export class HomeComponent implements OnInit {
     this.searchValue = searchValue !== undefined ? searchValue : '';
     this.url += 'ProductName=' + this.searchValue + '&';
 
-    this.catogoryValue !== undefined ? category : '';
-    this.url += 'CategoryName=' + category + '&';
+    this.catogoryValue = category !== undefined ? category : '';
+    this.url += 'CategoryName=' + this.catogoryValue + '&';
     if (!Number.isNaN(this.pageNumber)) {
       this.url += 'PageNumber=' + page;
       this.pageNumber = page;

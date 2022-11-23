@@ -43,4 +43,8 @@ export class ProductOverviewComponent implements OnInit {
       this.quantityOfProduct = 1;
     });
   }
+
+  changeImage(imageUrl:string) {
+    this.currentImg = imageUrl;
+  }
 }

@@ -41,6 +41,8 @@ export class SearchComponent implements OnInit {
   public getSelectedCategory(event: any) {
     if (event.target.value !== 'Tất cả thể loại') {
       this.category = event.target.value;
+    } else {
+      this.category = '';
     }
   }
 

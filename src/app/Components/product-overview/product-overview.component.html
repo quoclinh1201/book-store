@@ -4,13 +4,14 @@
       <div
         class="product-detail-thumnail"
         *ngFor="let img of product.productImages"
+        (click)="changeImage(img.imageUrl)"
       >
         <img src="{{ img.imageUrl }}" class="img-fluid" alt="..." />
       </div>
     </div>
     <div class="product-detail-image">
       <img
-        src="{{ product.productImages[0].imageUrl }}"
+        src="{{ currentImg !== '' ?  currentImg : this.product!.productImages[0].imageUrl}}"
         class="img-fluid"
         alt="..."
       />
@@ -57,33 +58,6 @@
     </ng-template>
     <ng-template #requireLogin>
       <div style="margin-top: 5%;">Vui lòng đăng nhập để mua hàng</div>
-    </ng-template>
-
-
-    <!-- <div *ngIf="product.isAvailable === true then availableProduct else unavailableProduct"></div>
-      <ng-template #availableProduct>
-        <div class="product-detail-quantity">
-          <div class="product-detail-quantity-inline"><b>Số lượng: </b></div>
-          <div class="product-detail-quantity-inline">
-            <button (click)="decreaseValue()">-</button>
-            <input
-              class="product-detail-input-quantity"
-              type="number"
-              value="{{ quantityOfProduct }}"
-              disabled
-            />
-            <button (click)="increaseValue()">+</button>
-          </div>
-        </div>
-        <div class="add-to-cart-btn">
-          <button type="button" class="btn btn-primary">
-            Thêm vào giỏ hàng
-          </button>
-        </div>
-      </ng-template>
-      <ng-template #unavailableProduct>
-        <div style="margin-top: 5%; color: red;">Sản phẩm hiện đang hết hàng</div>
-      </ng-template> -->
-    
+    </ng-template>    
   </div>
 </div>

@@ -36,7 +36,7 @@ export class UserService {
     const url = `${REST_API_SERVER}` + 'users/change-avatar';
     const formData = new FormData(); 
     formData.append("image", file, file.name);
-    return this.httpClient.put<Result<GetOwnProfileResponse>>(url, {'file': formData}, {
+    return this.httpClient.put<Result<GetOwnProfileResponse>>(url, formData, {
       headers: new HttpHeaders({
         'Content-Type': 'multipart/form-data',
         Authorization: `Bearer ` + token,

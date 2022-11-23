@@ -16,7 +16,6 @@ export class NavbarComponent implements OnInit {
 
   loadUser() {
     const token = this.cookieService.getCookie('token');
-    console.log('token = ' + token);
     if(token !== '') {
       this.isLogedIn = true;
     }

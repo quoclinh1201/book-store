@@ -3,6 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import {
+  FacebookLoginProvider,
+  SocialLoginModule,
+  SocialAuthServiceConfig,
+} from 'angularx-social-login';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,8 +29,7 @@ import { DeliveryInformationComponent } from './Components/delivery-information/
 import { OrdersComponent } from './Components/orders/orders.component';
 import { OrderDetailComponent } from './Components/order-detail/order-detail.component';
 import { AddDeliveryComponent } from './Components/add-delivery/add-delivery.component';
-import {CommonUtils} from './Common/CommonUtils';
-
+import { CommonUtils } from './Common/CommonUtils';
 
 @NgModule({
   declarations: [
@@ -49,8 +53,29 @@ import {CommonUtils} from './Common/CommonUtils';
     OrderDetailComponent,
     AddDeliveryComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule],
-  providers: [CommonUtils],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    SocialLoginModule
+  ],
+  providers: [
+    CommonUtils,
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('679247113780136'),
+          },
+        ],
+      } as SocialAuthServiceConfig,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

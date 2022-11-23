@@ -44,4 +44,15 @@ export class AuthService {
       ),
     });
   }
+
+  loginWithFb(fbId:string, name:string) : Observable<Result<LoginResponse>> {
+    const url = `${REST_API_SERVER}` + 'accounts/facebook-login';
+    return this.httpClient.post<Result<LoginResponse>>(url, {'facebook_id': fbId, 'name': name} , {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        // 'Authorization': `Bearer ` + token
+      }
+      ),
+    });
+  }
 }

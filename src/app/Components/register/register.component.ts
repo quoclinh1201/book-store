@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { FacebookLoginProvider, SocialAuthService } from 'angularx-social-login';
 import { CommonUtils } from 'src/app/Common/CommonUtils';
 import { LoginResponse } from 'src/app/Models/Response/LoginResponse';
 import { Result } from 'src/app/Models/Result';
@@ -32,7 +33,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private commonUtils: CommonUtils,
-    private cookieService: CookiesService
+    private cookieService: CookiesService,
+    private socialAuthService: SocialAuthService
   ) {}
 
   ngOnInit(): void {}
@@ -75,5 +77,18 @@ export class RegisterComponent implements OnInit {
           this.registerErr = err.error.error.message;
       })
     }
+  }
+
+  loginWithFb() {
+    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
+    this.socialAuthService.authState.subscribe((user) => {
+      this.authService.loginWithFb(user.id, user.name).subscribe(data => {
+        const response = this.commonUtils.keysToCamel(
+          data
+        ) as Result<LoginResponse>;
+        this.cookieService.setCookie('token', response.content.token, 7);
+        window.location.reload();
+      })
+    });
   }
 }
