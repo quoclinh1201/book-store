@@ -11,7 +11,7 @@
     </div>
     <div class="order-item-row" *ngFor="let item of order.orderDetail">
       <div class="order-item-1">
-        <a routerLink="product">
+        <a routerLink="product/{{item.productId}}">
           <img
             src="{{item.productImageUrl}}"
             class="img-fluid"

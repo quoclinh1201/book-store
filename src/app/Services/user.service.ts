@@ -32,13 +32,22 @@ export class UserService {
     });
   }
 
-  changeAvatar(token:string, file:File) : Observable<Result<GetOwnProfileResponse>> {
+  changeAvatar(token:string, filee:File) : Observable<Result<GetOwnProfileResponse>> {
+    console.log(filee);
     const url = `${REST_API_SERVER}` + 'users/change-avatar';
-    const formData = new FormData(); 
-    formData.append("image", file, file.name);
-    return this.httpClient.put<Result<GetOwnProfileResponse>>(url, formData, {
+    let file = new FormData(); 
+    file.append("image", filee);
+    return this.httpClient.put<Result<GetOwnProfileResponse>>(url, file, {
       headers: new HttpHeaders({
-        'Content-Type': 'multipart/form-data',
+        'Content-Type':  "multipart/form-data; boundary=AaB03x" +
+          "--AaB03x" +
+          "Content-Disposition: file" +
+          "Content-Type: image/jpeg" +
+          "Content-Transfer-Encoding: binary" +
+          "...data... " +
+          "--AaB03x--",
+        Accept: "*/*",
+        type: "formData",
         Authorization: `Bearer ` + token,
       }),
     });
