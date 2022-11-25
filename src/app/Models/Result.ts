@@ -4,5 +4,4 @@ export interface Result<T> {
     content: T;
     error: CustomError;
     isSuccess: boolean;
-    responseTime: string;
 }
