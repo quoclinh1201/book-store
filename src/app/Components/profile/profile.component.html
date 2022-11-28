@@ -3,16 +3,6 @@
     <div class="profile-detail-title">Thông tin cá nhân</div>
     <div class="profile-detail-info">
       <form action="">
-        <!-- <div class="mb-3">
-          <label for="profile-username" class="form-label">Tài khoản</label>
-          <input
-            type="text"
-            class="form-control"
-            id="profile-username"
-            value="customer1"
-            disabled
-          />
-        </div> -->
         <div class="mb-3">
           <label for="profile-fullname" class="form-label">Họ và tên</label>
           <input
@@ -58,9 +48,11 @@
         </button>
       </form>
       <div>
-        <button type="button" class="btn btn-primary" *ngIf="isEditMode === false" style="margin-right: 4%" data-bs-toggle="modal" data-bs-target="#change-password-form">
-          Đổi mật khẩu
-        </button>
+        
+          <button type="button" class="btn btn-primary" *ngIf="isEditMode === false && isFacebookAccount === false" style="margin-right: 4%" data-bs-toggle="modal" data-bs-target="#change-password-form">
+            Đổi mật khẩu
+          </button>
+    
         <button type="button" class="btn btn-primary" *ngIf="isEditMode === false" (click)="changeToEditMode()">
           Cập nhật thông tin cá nhân
         </button>

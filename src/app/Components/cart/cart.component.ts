@@ -85,7 +85,7 @@ export class CartComponent implements OnInit {
 
   checkout() {
     if (this.child.selectedDelivery === undefined) {
-      this.requireChooseDelivery = 'Vui lòng chọn thông tin giao hàng';
+      this.requireChooseDelivery = 'Vui lòng chọn thông tin nhận hàng';
     } else this.requireChooseDelivery = '';
 
     if (this.child.paymentMethod === '') {

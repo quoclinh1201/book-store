@@ -1,3 +1,13 @@
-<app-product-overview [product]="product" [images]="images"></app-product-overview>
-<br/>
-<app-product-information [product]="product"></app-product-information>
+<div *ngIf="!isNotFound">
+    <app-product-overview [product]="product" [images]="images"></app-product-overview>
+    <br/>
+    <app-product-information [product]="product"></app-product-information>
+</div>
+<div *ngIf="isNotFound">
+    <div style="text-align: center;">
+        <div style="margin: 10%;">Sản phẩm không tồn tại.</div>
+        <div>
+            <button type="button" class="btn btn-primary" routerLink="">Về trang chủ</button>
+        </div>
+    </div>
+</div>

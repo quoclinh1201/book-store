@@ -15,6 +15,7 @@ export class ProductDetailComponent implements OnInit {
   public productId: number = 1;
   public product!: ProductResponse;
   public images: ProductImageResponse[] = []; 
+  public isNotFound = true;
 
   constructor(
     private acitvatedRoute: ActivatedRoute,
@@ -36,6 +37,9 @@ export class ProductDetailComponent implements OnInit {
       this.product = result.content;
       this.images = result.content.productImages;
       this.product.productImages = this.images;
+      this.isNotFound = false;
+    }, err => {
+      this.isNotFound = true;
     })
   }
 }

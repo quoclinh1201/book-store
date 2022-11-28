@@ -4,4 +4,5 @@ export interface GetOwnProfileResponse {
     phoneNumber: string;
     avatarUrl: string;
     gender: boolean;
+    isFacebookAccount: boolean;
 }

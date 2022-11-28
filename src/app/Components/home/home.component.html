@@ -1,17 +1,23 @@
 <app-search (searchProduct)="getListProduct($event.page, $event.searchValue, $event.category)"></app-search>
-<div class="list-prodct">
-  <app-product-card
-    *ngFor="let product of listProducts"
-    [product]="product"
-    [isLogedIn]="isLogedIn"
-  ></app-product-card>
+<div *ngIf="listProducts.length > 0">
+  <div class="list-prodct">
+    <app-product-card
+      *ngFor="let product of listProducts"
+      [product]="product"
+      [isLogedIn]="isLogedIn"
+    ></app-product-card>
+  </div>
+  <div>
+    <nav>
+      <ul class="pagination justify-content-center">
+        <li class="page-item" [ngClass]="{'disabled': isPrevious === false }"><a class="page-link" (click)="getListProduct(pageNumber-1, searchValue, catogoryValue)">Previous</a></li>
+        <li class="page-item" [ngClass]="{'active': pageNumber === i+1}" *ngFor="let page of pageList; let i = index;"><a class="page-link" (click)="getListProduct(i+1, searchValue, catogoryValue)">{{i+1}}</a></li>
+        <li class="page-item" [ngClass]="{'disabled': isNext === false}"><a class="page-link" (click)="getListProduct(pageNumber+1, searchValue, catogoryValue)">Next</a></li>
+      </ul>
+    </nav>
+  </div>
 </div>
-<div>
-  <nav>
-    <ul class="pagination justify-content-center">
-      <li class="page-item" [ngClass]="{'disabled': isPrevious === false }"><a class="page-link" (click)="getListProduct(pageNumber-1, searchValue, catogoryValue)">Previous</a></li>
-      <li class="page-item" [ngClass]="{'active': pageNumber === i+1}" *ngFor="let page of pageList; let i = index;"><a class="page-link" (click)="getListProduct(i+1, searchValue, catogoryValue)">{{i+1}}</a></li>
-      <li class="page-item" [ngClass]="{'disabled': isNext === false}"><a class="page-link" (click)="getListProduct(pageNumber+1, searchValue, catogoryValue)">Next</a></li>
-    </ul>
-  </nav>
+<div *ngIf="listProducts.length === 0">
+  <div></div>
 </div>
+

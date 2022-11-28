@@ -10,7 +10,7 @@
         <div class="cart-item-5"></div>
       </div>
       <div class="cart-item-row" *ngFor="let item of cartItems">
-        <div class="cart-item-1">
+        <div class="cart-item-1" routerLink="product/{{item.productId}}">
           <img
             src="{{item.productImageUrl}}"
             class="img-fluid"

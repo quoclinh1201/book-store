@@ -20,6 +20,7 @@ export class ProfileComponent implements OnInit {
   public email = new FormControl({value:'', disabled: true}, [Validators.maxLength(50), Validators.email]);
   public phone = new FormControl({value:'', disabled: true}, [Validators.maxLength(10), Validators.minLength(10), Validators.pattern("[0]{1}[0-9]{9}")]);
   public gender = new FormControl({value:true, disabled: true}, Validators.required);
+  public isFacebookAccount = false;
   public avatarUrl = '';
   public fullnameErr = '';
   public emailErr = '';
@@ -45,6 +46,7 @@ export class ProfileComponent implements OnInit {
       this.phone.setValue(response.content.phoneNumber);
       this.gender.setValue(response.content.gender);
       this.avatarUrl = response.content.avatarUrl;
+      this.isFacebookAccount = response.content.isFacebookAccount;
     })
   }
 
@@ -76,6 +78,7 @@ export class ProfileComponent implements OnInit {
         this.phone.setValue(response.content.phoneNumber);
         this.gender.setValue(response.content.gender);
         this.avatarUrl = response.content.avatarUrl;
+        this.isFacebookAccount = response.content.isFacebookAccount;
         alert('Cập nhật thông tin cá nhân thành công');
         this.cancelEdit();
       })
@@ -107,13 +110,16 @@ export class ProfileComponent implements OnInit {
     const token = this.cookieService.getCookie('token');
       this.userService.changeAvatar(token, this.file).subscribe(data => {
         const response = this.commonUtils.keysToCamel(data) as Result<GetOwnProfileResponse>;
-        this.fullname.setValue(response.content.fullName);
-        this.email.setValue(response.content.email);
-        this.phone.setValue(response.content.phoneNumber);
-        this.gender.setValue(response.content.gender);
-        this.avatarUrl = response.content.avatarUrl;
+        caches.delete(response.content.avatarUrl.substring(response.content.avatarUrl.lastIndexOf("/") + 1));
+        // this.fullname.setValue(response.content.fullName);
+        // this.email.setValue(response.content.email);
+        // this.phone.setValue(response.content.phoneNumber);
+        // this.gender.setValue(response.content.gender);
+        // this.avatarUrl = response.content.avatarUrl;
+        // this.isFacebookAccount = response.content.isFacebookAccount;
         alert('Cập nhật avatar thành công');
-        this.isChangeAvtMode = false;
+        window.location.reload();
+        // this.isChangeAvtMode = false;
       })
   }
 
